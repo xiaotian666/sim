@@ -11,16 +11,16 @@
     <script src="../../resource/bootstrap-table-master/src/bootstrap-table.js"></script>
     <script src="../../resource/bootstrap-table-master/src/extensions/export/bootstrap-table-export.js"></script>
     <style type="text/css">
-        body{
-            font-family: 'microsoft yahei',Arial,sans-serif;
-            margin:0;
-            padding:0;
+        body {
+            font-family: 'microsoft yahei', Arial, sans-serif;
+            margin: 2cm;
+            padding: 0;
         }
     </style>
 </head>
 <body>
 <div id="loginModal" class="modal show">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 30%;height: 60%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="text-center text-primary">登录</h1>
@@ -31,7 +31,8 @@
                         <input id="id" type="text" class="form-control input-lg" placeholder="学号">
                     </div>
                     <div class="form-group">
-                        <input id="password" type="password" class="form-control input-lg" onkeydown="if(event.keyCode==13){logbutten.click()}" placeholder="登录密码">
+                        <input id="password" type="password" class="form-control input-lg"
+                               onkeydown="if(event.keyCode==13){logbutten.click()}" placeholder="登录密码">
                     </div>
                     <div>
                         <select id="person" class="form-control input-lg">
@@ -42,7 +43,9 @@
                     </div>
                     </br>
                     <div class="form-group">
-                        <button id="logbutten" type="button" class="btn btn-primary btn-lg btn-block" onclick="login()">立刻登录</button>
+                        <button id="logbutten" type="button" class="btn btn-primary btn-lg btn-block" onclick="login()">
+                            立刻登录
+                        </button>
                     </div>
                 </form>
             </div>
@@ -53,22 +56,23 @@
 </div>
 <script>
     function login() {
-        var data ={
-            id:document.getElementById('id').value,
-            password:document.getElementById('password').value,
-            person:document.getElementById("person").value
+        var data = {
+            id: document.getElementById('id').value,
+            password: document.getElementById('password').value,
+            person: document.getElementById("person").value
         };
         $.ajax({
             url: "/login/loginapi",
-            type:"post",
-            data:data,
+            type: "post",
+            data: data,
             success: successCallback,
             error: errorCallback
         });
-        function successCallback(json){
+        function successCallback(json) {
             alert(json.toString());
         }
-        function errorCallback(){
+
+        function errorCallback() {
             alert(data);
         }
     }
